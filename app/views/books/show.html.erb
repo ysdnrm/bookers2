@@ -1,0 +1,15 @@
+<h1>自分の投稿詳細ページ<h1>
+<!--投稿ユーザー画像-->
+<p><%= image_tag @book.user.get_profile_image(100,100) %></p>
+<!--ユーザーネーム-->
+<p><%= @book.user.name %></p>
+<!--タイトル-->
+<p><%= @book.title %></p>
+<!--説明-->
+<p><%= @book.body %></p>
+
+<div class="btn">
+ <div><%= link_to 'Edit', edit_book_path(@book.id) %></div>
+
+ <div><%= link_to 'Destroy', book_path %></div>
+</div>
