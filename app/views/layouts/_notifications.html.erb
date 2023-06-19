@@ -1,0 +1,5 @@
+<!--deviseのフラッシュメッセージ-->
+<div class="Notification">
+ <% flash.each do |key, value| %>
+ <%= content_tag :div, value, class: key %>
+</div>

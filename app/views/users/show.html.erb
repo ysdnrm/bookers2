@@ -1,40 +1,4 @@
-<!--ユーザー詳細ページ-->
-
-<h2>User info</h2>
-  <!--プロフィール画像-->
-  <p><%= image_tag @user.get_profile_image(100,100) %></p>
-  <table>
-    <tbody>
-       <!--ユーザーネーム-->
-       <tr>
-         <th>name</th>
-         <th><%= @user.name %></th>
-       </tr>
-        <!--自己紹介-->
-       <tr>
-         <th>introduction</th>
-         <th><%= @user.introduction %></th>
-       </tr>
-    </tbody>
-  </table>
-  
-  <% if @user.id == current_user.id %>
-  <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% end %>
-  
-<!--新規投稿-->
-<h2>New book</h2>
-  <%= form_with model: @book, url: '/books', method: :post do |f| %>
-    
-    <h4>Title</h4>
-      <%= f.text_field :title %>
-    <h4>Opinion</h4>
-      <%= f.text_area :body %>
-      
-      <%= f.submit 'Create Book' %>
-  <% end %>
-     
-<!-- ユーザーの投稿一覧 -->
+<!-- 自分の投稿一覧 -->
 <h2>Books</h2>
   <p><%= image_tag @user.get_profile_image(100,100) %></p>
   <p><%= @user.name %></p>
@@ -59,4 +23,5 @@
    <% end %>
  </table>
 
+ <!--部分テンプレート呼び出し-->
 
