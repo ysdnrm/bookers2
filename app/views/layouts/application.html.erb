@@ -2,9 +2,9 @@
 <html>
   <head>
     <title>Bookers2</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!--FontAwesomeを使用していく準備-->
     <script src="https://kit.fontawesome.com/0d9a4945d7.js" crossorigin="anonymous"></script>
 
@@ -13,10 +13,11 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-   <header>
-     <nav>
-      <div><%= link_to "Bookers", root_path %></div>
+  <body class="d-flex flex-column vh-100">
+   <header class="bg-dark text-white">
+     <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+      <%= link_to "Bookers", root_path %>
       <% if user_signed_in? %>
       <li>
         <!--current_user.idはログインしていないと使えない-->
@@ -46,10 +47,9 @@
         <%= link_to "Log in", new_user_session_path %>
       </li>
     <% end %>
+    </div>
     </nav>
    </header>
-  <!--フラッシュメッセージ-->
-  
     <%= yield %>
     
     <footer>CopyRight Infratop.inc</footer>

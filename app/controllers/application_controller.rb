@@ -1,17 +1,17 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  
+  # ログインしてない場合はログイン画面に遷移
+   before_action :authenticate_user!, except: [:top, :about]
+  
   # サインイン後の遷移
   def after_sign_in_path_for(resource)
-    user_path(@user.id)
+    user_path(current_user)
   end
-  # サインアウト後の遷移
-  # これいらないかも
-  def after_sign_out_path_for(resource)
+ 
+ def after_sign_out_path_for(resource)
     root_path
-  end
-  
-  
-
+ end
   protected
 
   def configure_permitted_parameters
