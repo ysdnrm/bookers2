@@ -2,8 +2,9 @@
 <h2>User info</h2>
   <!--プロフィール画像-->
   <p><%= image_tag user.get_profile_image(100,100) %></p>
-  <table>
+  <table class="table">
     <tbody>
+       <tr></tr>
        <!--ユーザーネーム-->
        <tr>
          <th>name</th>
@@ -16,17 +17,21 @@
        </tr>
     </tbody>
   </table>
-
-  <p><%= link_to "プロフィール編集", edit_user_path(user.id) %></p>
-
-<!--新規投稿-->
-<h2>New book</h2>
-   <%= form_with model: Book.new do |f| %>
-
-    <h4>Title</h4>
-      <%= f.text_field :title %>
-    <h4>Opinion</h4>
-      <%= f.text_area :body %>
-
-      <%= f.submit 'Create Book' %>
+ <div class="row">
+  <%= link_to edit_user_path(user.id),class: 'btn btn-outline-dark btn-block edit_user_id' do%>
+   <i class="fa-solid fa-user-gear"></i>
   <% end %>
+ </div>
+ <!--新規投稿-->
+ <h2 class="mt-3">New book</h2>
+   <%= form_with model: Book.new do |f| %>
+    
+    <p>Title</p>
+      <%= f.text_field :title %>
+    <p>Opinion</p>
+      <%= f.text_area :body %>
+      
+    <%= f.submit 'Create Book', class: "btn btn-success mt-3" %>
+  <% end %>
+
+ 

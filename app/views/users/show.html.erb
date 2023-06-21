@@ -5,31 +5,41 @@
   <%= flash[:notice] %>
 </div>
 
-<h2>Books</h2>
+<div class="container">
+  <div class="row pt-3">
 
-  <table>
-   <thead>
-     <tr>
+   <div class="col-lg-3">
+        <!--部分テンプレート呼び出し-->
+     <%= render 'books/side', user: @user, book: @book %>
+   </div> 
+   
+   <div class="col-lg-8 offset-lg-1">   
+    <h2>Books</h2>
+
+    <table class="table">
+     <thead>
+      <tr>
        <th></th>
        <th>Title</th>
        <th>Opinion</th>
-     </tr>
-   </thead>
-   <% @books.each do |book| %>
-   <tbody>
-     <tr>
+      </tr>
+     </thead>
+     <% @books.each do |book| %>
+     <tbody>
+      <tr>
        <td>
-           <%= link_to user_path(@user.id) do %>
-              <%= image_tag @user.get_profile_image(100,100) %>
-           <% end %>
+         <%= link_to user_path(@user.id) do %>
+            <%= image_tag @user.get_profile_image(100,100) %>
+         <% end %>
        </td>
 
        <td><%=link_to book.title , book_path(book.id) %></td>
        <td><%= book.body %></td>
-     </tr>
-   </tbody>
-   <% end %>
- </table>
+      </tr>
+     </tbody>
+     <% end %>
+    </table>
+   </div>
 
- <!--部分テンプレート呼び出し-->
- <%= render 'books/side', user: @user, book: @book %>
+  </div>
+</div>

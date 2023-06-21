@@ -1,22 +1,33 @@
 <!--全ユーザー一覧-->
-<h2>Users</h2>
-<table>
- <thead>
-  <tr>
-   <th>image</th>
-   <th>name</th>
-   <th></th>
-  </tr>
- </thead>
- <% @users.each do |user| %>
- <tbody>
-  <tr>
-   <td><%= image_tag user.get_profile_image(100,100) %></td>
-   <td><%= user.name %></td>
-   <td><%= link_to "Show", user_path(user.id) %></td>
-  </tr>
- </tbody>
- <% end %>
-</table>
- <!--部分テンプレート呼び出し-->
- <%= render 'books/side', user: @user, book: @book %>
+<div class="container">
+  <div class="row pt-3">
+
+   <div class="col-lg-3">
+      <!--部分テンプレート呼び出し-->
+      <%= render 'books/side', user: @user, book: @book %>
+   </div>
+
+   <div class="col-lg-8 offset-lg-1">
+    <h2>Users</h2>
+     <table class="table">
+      <thead>
+       <tr>
+        <th>image</th>
+        <th>name</th>
+        <th></th>
+       </tr>
+      </thead>
+      <% @users.each do |user| %>
+      <tbody>
+       <tr>
+        <td><%= image_tag user.get_profile_image(100,100) %></td>
+        <td><%= user.name %></td>
+        <td><%= link_to "Show", user_path(user.id) %></td>
+       </tr>
+      </tbody>
+      <% end %>
+     </table>
+   </div>
+
+  </div>
+</div>

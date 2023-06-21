@@ -2,37 +2,41 @@
   <%= flash[:notice] %>
 </div>
 
-<h1>Editing Book</h1>
-<!--エラーメッセージ-->
-<% if @book.errors.any? %>
- <div>
-   <h2><%= @book.errors.count %>errors prohibited this book from being saved:</h2>
-   <ul>
-    <% @book.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-   </ul>
+<div class="container">
+ <div class="row">
+  <div class="mt-4 mx-auto col-sm-12 col-md-8 col-lg-5 px-5">
+   <h1>Editing Book</h1>
+   <!--エラーメッセージ-->
+   <% if @book.errors.any? %>
+   <div>
+    <h2><%= @book.errors.count %>errors prohibited this book from being saved:</h2>
+     <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+     </ul>
+   </div>
+   <% end %>
+
+   <form>
+     <%= form_with model: @book, url:book_path(@book.id), method: :patch do |f| %>
+      <p class="mb-0">Title</p>
+       <%= f.text_field :title %>
+
+      <p class="mb-0 mt-3">Opinion</p>
+       <%= f.text_area :body %>
+
+        <%= f.submit 'Update Book', class: "btn btn-success mt-2" %>
+     <% end %>
+
+     <div class="btn-group mt-2">
+      <%= link_to 'Show', book_path(@book.id) %>
+       <p> | </p>
+      <%= link_to 'Back', books_path %>
+     </div>
+ </form>
+
+  </div>
  </div>
-<% end %>
-
-<%= form_with model: @book, url:book_path(@book.id), method: :patch do |f| %>
- <div>
-   <p>Title</p>
-   <%= f.text_field :title %>
- </div>
-
- <div>
-   <p>Opinion</p>
-   <%= f.text_area :body %>
- </div>
-
- <div>
-   <%= f.submit 'Update Book' %>
- </div>
-<% end %>
-
-
- <div><%= link_to 'Show', book_path(@book.id) %></div>
-
- <div><%= link_to 'Back', books_path %></div>
 </div>
+
