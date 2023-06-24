@@ -18,7 +18,6 @@
    </div>
    <% end %>
 
-   <form>
      <%= form_with model: @book, url:book_path(@book.id), method: :patch do |f| %>
       <p class="mb-0">Title</p>
        <%= f.text_field :title %>
@@ -34,7 +33,6 @@
        <p> | </p>
       <%= link_to 'Back', books_path %>
      </div>
- </form>
 
   </div>
  </div>
